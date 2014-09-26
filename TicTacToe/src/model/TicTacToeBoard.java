@@ -4,6 +4,9 @@ import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
+import exceptions.InvalidMovementException;
+import model.TicTacToeMovement;
+
 public class TicTacToeBoard {
 
 	private List<Cell> cells= new ArrayList<Cell>();
@@ -32,8 +35,8 @@ public class TicTacToeBoard {
 	}
 
 
-	public void newMovement(Mark mark, Point position) {
-		cells.stream().filter(cell -> cell.inTheSamePosition(position)).findAny().get().mark(mark);
+	public void newMovement(Mark mark, Point position) throws InvalidMovementException {
+		new TicTacToeMovement(cells,position,mark);
 	}
 
 	

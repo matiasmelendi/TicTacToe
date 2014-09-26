@@ -2,6 +2,8 @@ package model;
 
 import java.awt.Point;
 
+import exceptions.InvalidMovementException;
+
 public class TicTacToe {
 	
 	Player player;
@@ -18,7 +20,7 @@ public class TicTacToe {
 		return board.isEmpty();
 	}
 
-	public void play(Player player1,Point position) {
+	public void play(Player player1,Point position) throws InvalidMovementException {
 		board.newMovement(player1.mark(),position);
 	}
 
