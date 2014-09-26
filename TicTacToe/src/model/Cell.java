@@ -12,24 +12,20 @@ public class Cell {
 		mark= new Unmarked();
 	}
 
-	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return mark.isUnmarked();
-	}
+	public boolean isEmpty() {return mark.isUnmarked();}
 
-	public Point position() {
-		// TODO Auto-generated method stub
-		return position;
-	}
+	public Point position() {return position;}
 
+	public int x(){return position().x; }
+	
+	public int y(){return position().y; }
+
+	public void mark(Mark mark) {this.mark=mark;}
+	
+	public Mark mark(){ return mark;}
+	
 	public boolean inTheSamePosition(Point position2) {
-		// TODO Auto-generated method stub
 		return position().equals(position2);
-	}
-
-	public void mark(Mark mark) {
-		// TODO Auto-generated method stub
-		this.mark=mark;
 	}
 
 }

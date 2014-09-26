@@ -43,11 +43,10 @@ public class TicTacToeTest {
 	@Rule public ExpectedException thrown = ExpectedException.none();
 	//The movements should be between(0,0) and (2,2)
 	@Test
-	public void testAPlayerDoAnInvalidMovementInTheBoard() throws Exception{
+	public void testAPlayerDoAnInvalidMovementInTheBoard() throws InvalidMovementException{
 		Point invalidPosition= new Point(10,2);
-		thrown.expect(InvalidMovementException.class);
-		
-		ticTacToe.play(player1,invalidPosition);
+		/*expect*/thrown.expect(InvalidMovementException.class);
+		/*when*/ ticTacToe.play(player1,invalidPosition);
 		assertTrue(ticTacToe.boardIsEmpty());
 	}
 	
@@ -60,6 +59,32 @@ public class TicTacToeTest {
 		/*when*/ ticTacToe.play(player2, position);
 	}
 	
+	@Test
+	public void testTwoHumansPlayingAndOneWin() throws InvalidMovementException{
+		ticTacToe.play(player1,new Point(0,0));
+		ticTacToe.play(player1,new Point(1,0));
+		ticTacToe.play(player1,new Point(2,0));
+		
+		assertTrue(ticTacToe.theWinnerIs(player1));
+	}
 	
+	@Test
+	public void testTwoHumansPlayingAndOneLose() throws InvalidMovementException{
+		ticTacToe.play(player1,new Point(0,0));
+		ticTacToe.play(player1,new Point(1,0));
+		ticTacToe.play(player1,new Point(2,0));
+		
+		assertFalse(ticTacToe.theWinnerIs(player2));
+	}
+	
+	@Test
+	public void testTwoHumansPlayingAndNobodyWin() throws InvalidMovementException{
+		ticTacToe.play(player1,new Point(0,0));
+		ticTacToe.play(player1,new Point(1,0));
+		ticTacToe.play(player1,new Point(0,1));
+	
+		assertFalse(ticTacToe.theWinnerIs(player2));
+		assertFalse(ticTacToe.theWinnerIs(player1));
+	}
 
 }
