@@ -1,5 +1,7 @@
 package model;
 
+import java.awt.Point;
+
 public class TicTacToe {
 	
 	Player player;
@@ -14,6 +16,10 @@ public class TicTacToe {
 
 	public boolean boardIsEmpty() {
 		return board.isEmpty();
+	}
+
+	public void play(Player player1,Point position) {
+		board.newMovement(player1.mark(),position);
 	}
 
 }

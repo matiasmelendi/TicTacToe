@@ -1,5 +1,6 @@
 package model;
 
+import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,6 +29,11 @@ public class TicTacToeBoard {
 	
 	public boolean isEmpty() {
 		return cellsAreEmpty();
+	}
+
+
+	public void newMovement(Mark mark, Point position) {
+		cells.stream().filter(cell -> cell.inTheSamePosition(position)).findAny().get().mark(mark);
 	}
 
 	

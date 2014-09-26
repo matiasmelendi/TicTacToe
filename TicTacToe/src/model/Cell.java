@@ -17,4 +17,19 @@ public class Cell {
 		return mark.isUnmarked();
 	}
 
+	public Point position() {
+		// TODO Auto-generated method stub
+		return position;
+	}
+
+	public boolean inTheSamePosition(Point position2) {
+		// TODO Auto-generated method stub
+		return position().equals(position2);
+	}
+
+	public void mark(Mark mark) {
+		// TODO Auto-generated method stub
+		this.mark=mark;
+	}
+
 }
